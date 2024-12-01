@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class AppService {
   constructor(
     @InjectRepository(User)
-    private repository: Repository<User>
+    private repository: Repository<User>,
   ) {}
 
   private userData = [];
@@ -17,31 +17,40 @@ export class AppService {
   }
   insertData(data) {
     this.userData.push(data);
-    return {message: "Data Inserted", data};
+    return { message: 'Data Inserted', data };
   }
   userInfobyName(name) {
-    return this.userData.find((data) => data.name == name)||{message: "Not Found"};
+    return (
+      this.userData.find((data) => data.name == name) || {
+        message: 'Not Found',
+      }
+    );
   }
-
 
   //Database Works
-  insertUser(data) { // Insert user data.
+  insertUser(data) {
+    // Insert user data.
     return this.repository.save(data); // Save user data to db.
   }
-  getUserInfo() { // Get all users.
+  getUserInfo() {
+    // Get all users.
     return this.repository.find(); // Find all users.
   }
-  getUserInfoById(id) { // Get user by id.
-    return this.repository.findOne({where:{id}}); // Find user by id.
+  getUserInfoById(id) {
+    // Get user by id.
+    return this.repository.findOne({ where: { id } }); // Find user by id.
   }
-  deleteUser(id) { // Delete user by id.
+  deleteUser(id) {
+    // Delete user by id.
     return this.repository.delete(id); // Delete user by id.
   }
-  async updateUser(id, data) { // Update user by id.
-    if(await this.repository.findOne({where:{id}})) { // Check if user exists.
+  async updateUser(id, data) {
+    // Update user by id.
+    if (await this.repository.findOne({ where: { id } })) {
+      // Check if user exists.
       return this.repository.update(id, data); // Update user by id.
     } else {
-      return {message: "User not found"}; // Return error message
+      return { message: 'User not found' }; // Return error message
     }
   }
 }
