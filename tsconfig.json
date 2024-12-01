@@ -16,6 +16,9 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "noUnusedParameters": true, // used to check is all function parameters are used
+    "noImplicitReturns": true, // used to check if all code paths return a value
+    "noUnusedLocals": true // used to check if all local variables are used
   }
 }
