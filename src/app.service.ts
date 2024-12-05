@@ -28,7 +28,7 @@ export class AppService {
   }
 
   //Database Works
-  insertUser(data) {
+  insertUser(data: any) {
     // Insert user data.
     return this.repository.save(data); // Save user data to db.
   }
