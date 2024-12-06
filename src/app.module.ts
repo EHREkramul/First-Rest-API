@@ -15,7 +15,7 @@ import { UsersModule } from './users/users.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'blademania',
+      password: '3639',
       database: 'first-api-db',
       entities: [User], // Include the User entity
       synchronize: true,
